@@ -1,17 +1,15 @@
 <?php
 require_once 'vendor/autoload.php';
 
-$loader = new Twig_Loader_Filesystem('templates');
-/*
-$twig = new Twig_Environment($loader, array(
-    'cache' => 'compilation_cache',
-)); */
+$loader = new \Twig\Loader\FilesystemLoader('templates');
 
-$twig = new Twig_Environment($loader);
+$twig = new \Twig\Environment($loader, [
+    'cache' => '/path/to/compilation_cache',
+]);
 
 $links = [
-    ['url' => 'http://bruceelgort.com', 'title' => 'The website of Bruce Elgort','text' => 'Bruce Elgort'],
-    ['url' => 'http://clark.edu', 'title' => 'Clark College website','text' => 'Clark College'],
+    ['url' => 'http://bruceelgort.com', 'title' => 'The website of Bruce Elgort', 'text' => 'Bruce Elgort'],
+    ['url' => 'http://clark.edu', 'title' => 'Clark College website', 'text' => 'Clark College'],
     ['url' => 'http://elguji.com', 'title' => 'Elguji Software website', 'text' => 'Elguji Software']
 ];
 
@@ -21,4 +19,3 @@ $users = [
 ];
 
 echo $twig->render('index.html', ['links' => $links, 'users' => $users]);
-?>
